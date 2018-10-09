@@ -10,7 +10,7 @@ const  rp = require('request-promise')
 const  date = require('date-and-time');;
 const initial_data = require('../functions/send_data_to_db')
 var header = require("../functions/headers")
-
+const paytm_url =  require("../functions/paytm_api")
 
 
 router.get('/paytm',function(req,res,next){
@@ -51,8 +51,12 @@ router.get('/paytm',function(req,res,next){
         let products = response.grid_layout
         products.map(function(item, index){
             let product_name = item.name
-            let product_url_middleware = item.newurl
-            let product_url = product_url_middleware.replace(/catalog\.paytm/gm, 'paytmmall');
+            let url = item.newurl
+            let product_url=  paytm_url.paytm_url(url)
+
+
+
+            //let product_url = product_url_middleware.replace(/catalog\.paytm/gm, 'paytmmall');
             let product_price = item.offer_price
             let product_image_url = item.image_url
             paytm_json_obj['paytm_product'].push({"product_name" : product_name, "product_url" :product_url, "product_rating": "Not available","product_image_url":product_image_url, "product_price":product_price });
