@@ -16,8 +16,8 @@ router.get('/flipkart', function(req,res){
     const search = req.query.searchId
     if (search == undefined){
         res.send(JSON.stringify({"message":"this is an API, not a regular webpage.",
-            "how_to_access_it":"http://sitename/flipkart?searchId=product name",
-            "sample_search":"http://sitename/flipkart?searchId=ps4 games" }))
+            "how_to_access_it":"https://ecommerceview.ml/flipkart?searchId=product name",
+            "sample_search":"https://ecommerceview.ml/flipkart?searchId=ps4 games" }))
         return
     }
     const ip = req.ip

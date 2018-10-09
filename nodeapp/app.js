@@ -35,7 +35,8 @@ app.use(bodyParser.json());
 
 
 app.get('/', function(req, res,next){
-	res.send(JSON.stringify({"message":"this is an API, not a regular webpage."}))
+	res.send(JSON.stringify({"message":"this is an API, not a regular webpage.", 
+                                 "endpoints":["/amazon", "/paytm", "/flipkart"]}))
 })
 
 
@@ -49,6 +50,11 @@ app.use('/', flipkart);
 
 let paytm = require('./routes/paytm');
 app.use('/', paytm);
+
+app.use(function(req, res, next) {
+    res.status(404);
+    res.send({"message":"Page not found!"});
+});
 
 
 // app.use(function( req,res,next){

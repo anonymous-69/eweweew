@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  app:
+    image: myapp-node
+    restart: always
+    networks:
+      - node_web
+      - default
+    expose:
+      - "3000"
+    labels:
+      - "traefik.docker.network=node_web"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:www.ecommerceviewer.ml, ecommerceviewer.ml"
+      - "traefik.basic.port=3000"
+      - "traefik.basic.protocol=http"
+      - "traefik.admin.frontend.rule=Host:admin-app.ecommerceviewer.ml"
+      - "traefik.admin.protocol=https"
+      - "traefik.admin.port=3443"
+
+
+
+networks:
+  node_web:
+    external: true
+
+

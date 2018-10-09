@@ -130,7 +130,7 @@ def guest_post(random_id):
 
 
 
-@app.route('/a', methods=["GET", "POST"])
+@app.route('/', methods=["GET", "POST"])
 def index():
     return render_template("index.html")
 

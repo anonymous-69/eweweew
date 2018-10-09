@@ -1,0 +1,14 @@
+version: "3"
+services:
+
+  flask:
+    image: flask_app
+    labels:
+      - "traefik.frontend.rule=Host:www.bootupthegeek.ml, bootupthegeek.ml"
+    expose:
+      - "5000"
+networks:
+  web:
+    external: true
+
+

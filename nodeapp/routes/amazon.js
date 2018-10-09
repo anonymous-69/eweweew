@@ -38,8 +38,8 @@ router.get('/amazon', function(req, res,next){
     user.user()
     if (search == undefined){
         res.send(JSON.stringify({"message":"this is an API, not a regular webpage.",
-            "how_to_access_it":"http://sitename/amazon?searchId=product name",
-            "sample_search":"http://sitename/amazon?searchId=ps4 games" }))
+            "how_to_access_it":"https://ecommerceview.ml/amazon?searchId=product name",
+            "sample_search":"https://ecommerceview.ml/amazon?searchId=ps4 games" }))
         return
     }   
  

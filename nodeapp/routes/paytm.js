@@ -21,8 +21,8 @@ router.get('/paytm',function(req,res,next){
     const search = req.query.searchId
     if (search == undefined){
         res.send(JSON.stringify({"message":"this is an API, not a regular webpage.",
-            "how_to_access_it":"http://sitename/paytm?searchId=product name",
-            "sample_search":"http://sitename/paytm?searchId=ps4 games" }))
+            "how_to_access_it":"https://ecommerceview.ml/paytm?searchId=product name",
+            "sample_search":"https://ecommerceview.ml/paytm?searchId=ps4 games" }))
         return
     }    
     const ip = req.ip
