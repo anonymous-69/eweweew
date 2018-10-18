@@ -100,7 +100,7 @@ router.get('/amazon', function(req, res,next){
                     let product_name = escaping_characters.escaping_characters(name_)
                     //Grabbing URL
                     const regex_url = new RegExp('<a .*? title=\"' + product_name +  '\\".*?href=\\"(.*?)\\">' , 'g')
-                    let url = new amazon_product_properties(regex_url,data_array[i], "Name")
+                    let url = new amazon_product_properties(regex_url,data_array[i], "Product URL")
                     let product_url = url.product_properties()
                    
                     //Grabbing Image URL 

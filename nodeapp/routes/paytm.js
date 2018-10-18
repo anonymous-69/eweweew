@@ -25,8 +25,10 @@ router.get('/paytm',function(req,res,next){
             "sample_search":"https://ecommerceview.ml/paytm?searchId=ps4 games" }))
         return
     }    
-    const ip = req.ip
+    //const ip = req.ip
+    const ip = req
     let user = new initial_data(ip, search, site)
+    console.log(user)
     user.user()
 
     var  number_of_products

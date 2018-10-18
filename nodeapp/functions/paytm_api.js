@@ -16,7 +16,7 @@ function paytm_url(url){
         if (catalog_checker.index === catalog_regex.lastIndex) {
             catalog_regex.lastIndex++;
         }
-        let product_url = url.replace(/catalog\./gm, 'paytmmall');
+        let product_url = url.replace(/catalog\.paytm/gm, 'paytmmall');
         return product_url
     }
     else{

@@ -56,6 +56,7 @@ function escaping_characters(product_title){
     return newData7
 }
 
+
 function product_image(product_name){
 	const regex_image = new RegExp('<img src=\\"(.*?)\\" srcset=\\".*?\\" width=\\".*?\\" height=\\".*?\\" alt=\\"'+ product_name + '\\"', 'g' )
     console.log(regex_image)
@@ -80,7 +81,9 @@ function product_image(product_name){
     }
 }
 
- 
+//I am giving regex, the data and tell whether it is name, url or price. 
+//It then gives actual price, url and image url based on the data given to it. 
+//I am not doing the same for ratings as it is a different process, hence it's function is given below this class. 
 class amazon_product_properties{
 	constructor(regex,data_array, product_property ){
 		this.regex = regex, 
@@ -96,13 +99,13 @@ class amazon_product_properties{
 	            regex.lastIndex++;
 	        }
 	        let property = x[1]
-	        console.log(property)
+	        console.log("this is property" + property)
 	        return property
 
 	    }
 	    else{
-	        console.log(this.product_property +'URL not available')
-	        let property = this.product_property +'URL not available'
+	        console.log(this.product_property +' not available')
+	        let property = this.product_property+ ' not available'
 	        return property
 	        
 	    }
@@ -132,16 +135,19 @@ function ratings(product_name, data_array){
         
         var product_ratings = rating_number[1]
         console.log(product_ratings)
+        return product_ratings
         }
         else{
             console.log("unable to find ratings string- span class=\"a-icon-alt\" ")
-            var product_ratings = "unable to find ratings data"
+            var product_ratings = "ratings not available"
+            return product_ratings
         }
     
     }
     else{
         console.log("Unable to grab ratings")
-        var product_ratings = "unable to find ratings data"
+        var product_ratings = "ratings not available"
+        return product_ratings
     }
 }
 
