@@ -9,6 +9,7 @@ var request = require('request');
 var rp = require('request-promise');
 const initial_data = require('../functions/send_data_to_db')
 var header = require("../functions/headers")
+var get_ip = require('ipware')().get_ip;
 
 
 router.get('/flipkart', function(req,res){
@@ -20,9 +21,9 @@ router.get('/flipkart', function(req,res){
             "sample_search":"https://ecommerceview.ml/flipkart?searchId=ps4 games" }))
         return
     }
-    const ip = req.ip
+    const ip = get_ip(req);
     const site = "flipkart.com" 
-    let user = new initial_data(ip, search, site)
+    let user = new initial_data(ip.clientIp, search, site)
     user.user()
     const  search_term = encodeURI(search);
     const url_flipkart = "https://www.flipkart.com/api/4/page/fetch"

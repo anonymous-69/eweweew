@@ -10,6 +10,8 @@ services:
       - default
     expose:
       - "3000"
+#    volumes: 
+#      - ./nodeapp:/usr/src/app
     labels:
       - "traefik.docker.network=web"
       - "traefik.enable=true"

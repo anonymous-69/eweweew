@@ -10,7 +10,7 @@ var data_model = require("./Models/db_model");
 const date = require('date-and-time');
 const axios = require('axios')
 var rp = require('request-promise');
-
+var get_ip = require('ipware')().get_ip;
 const app = express()
 
 
@@ -35,8 +35,10 @@ app.use(bodyParser.json());
 
 
 app.get('/', function(req, res,next){
+	var ip_info = get_ip(req);
+     	console.log(ip_info);
 	res.send(JSON.stringify({"message":"this is an API, not a regular webpage.", 
-                                 "endpoints":["/amazon", "/paytm", "/flipkart"]}))
+                                 "endpoints":["/paytm", "/amazon", "/flipkart"]}))
 })
 
 

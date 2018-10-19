@@ -8,7 +8,7 @@ const JSON = require('circular-json');
 const request = require('request');
 const pretty = require('pretty');
 const rp = require('request-promise');
-
+const get_ip = require('ipware')().get_ip;
 //Importing the functions and classes. 
 const initial_data = require('../functions/send_data_to_db')
 const find_rh_value = require('../functions/amazon_functions_webpage')
@@ -32,9 +32,9 @@ router.get('/amazon', function(req, res,next){
     //let search = 'water bottles'
     const search = req.query.searchId
     const search_term = urldecode.urldecode(search)
-    const ip = req.ip
+    const ip = get_ip(req);
     const site = "amazon.in" 
-    let user = new initial_data(ip, search, site)
+    let user = new initial_data(ip.clientIp, search, site)
     user.user()
     if (search == undefined){
         res.send(JSON.stringify({"message":"this is an API, not a regular webpage.",

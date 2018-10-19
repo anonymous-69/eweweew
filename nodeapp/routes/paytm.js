@@ -8,6 +8,8 @@ const JSON = require('circular-json');
 const request = require('request');
 const  rp = require('request-promise')
 const  date = require('date-and-time');;
+var get_ip = require('ipware')().get_ip;
+
 const initial_data = require('../functions/send_data_to_db')
 var header = require("../functions/headers")
 const paytm_url =  require("../functions/paytm_api")
@@ -26,8 +28,8 @@ router.get('/paytm',function(req,res,next){
         return
     }    
     //const ip = req.ip
-    const ip = req
-    let user = new initial_data(ip, search, site)
+    const ip = get_ip(req);
+    let user = new initial_data(ip.clientIp, search, site)
     console.log(user)
     user.user()
 
